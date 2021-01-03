@@ -1,0 +1,118 @@
+html {
+  /* Prevents padding from adding extra width/height to the page and the appearance of scrollbars */
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* vh stands for viewport height, which is the full height of the entire window you're in. With this setting we want to always stretch our background to the full height of the screen.*/
+  min-height: 100vh;
+}
+
+#header {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 85%;
+}
+#header .title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+#header .title img {
+  max-width: 3em;
+}
+#header .title h2 {
+  padding-left: 0.5em;
+}
+#header .score {
+  margin: 0;
+  color: #6c90ac;
+}
+#header .tried {
+  margin-top: 0;
+}
+
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%; /* 新增：寬度和標頭一致 */
+  margin: 0 auto;  /* 新增：置中 */
+}
+
+.card {
+  /* 分配寬度，每張牌要占容器的多少空間 */
+  /* 52張牌，分4行排列，一行要有13張，100%/13 = 7% */
+  flex-basis: 7%;
+  /* 分配剩餘空間 */
+  flex-grow: 1;
+  /* 空間不足的話，如何收縮 */
+  /* 等比例收縮，設定值為1 */
+  flex-shrink: 1;
+  /* 依視窗的寬度等比例變化 */
+  height: 8vw;
+  border: 2px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 2px; /* 卡片邊距 */
+  box-sizing: border-box; 設定 box-sizing
+}
+
+.card img {
+  max-width: 30%;
+  align-self: center;
+}
+
+.card p {
+  margin: 3px;
+  font-size: 10px;
+}
+
+.card p:last-child {
+  transform: rotate(180deg);
+}
+
+.back {
+  background: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+  /* 讓背景圖片大小剛好是牌面的大小 */
+  background-size: cover;
+}
+
+.paired {
+  background-color: #dae0e3;
+}
+
+.wrong {
+  animation-name: wrongAnimation;
+  animation-duration: 0.2s;
+  animation-iteration-count: 5;
+}
+@keyframes wrongAnimation {
+  to {
+    border: 2px solid #ffd54f;
+  }
+}
+
+/** Game finished **/
+.completed {
+  position: absolute;
+  z-index: 999;
+  top: 33vh;
+  background-color: RGBA(232, 246, 254, 0.8);
+  width: 100vw;
+  padding: 50px 0;
+}
+.completed > p {
+  font-size: 1.5em;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+.completed > p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color: #758d9a;
+}
